@@ -1,6 +1,6 @@
 {
   "name": "react-translates",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Translate component that allows translate translations into other languages.",
   "author": "Kamil Kruczek",
   "license": "ISC",
