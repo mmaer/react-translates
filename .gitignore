@@ -1,0 +1,25 @@
+### user ###
+
+### test ###
+/bin
+/screenshots
+
+### base ###
+# release folder
+/dist
+/browser
+/styles.css
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+
+# Dependency directories
+node_modules
+coverage
+.nyc_output

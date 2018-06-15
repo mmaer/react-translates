@@ -1,0 +1,60 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "generator-star-spacing": [
+      0
+    ],
+    "no-duplicate-imports": [
+      0
+    ],
+    "complexity": [
+      "warn",
+      7
+    ],
+    "indent": [
+      2,
+      4
+    ],
+    "no-console": [
+      0
+    ],
+    "max-len": [
+      2,
+      120
+    ],
+    "spaced-comment": [
+      0
+    ],
+    "valid-jsdoc": 2,
+    "new-cap": [
+      2,
+      {
+        "capIsNewExceptions": [
+          "Map",
+          "List",
+          "Record"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      0
+    ],
+    "react/jsx-indent": [
+      2,
+      4
+    ],
+    "react/jsx-indent-props": [
+      2,
+      4
+    ]
+  }
+}
