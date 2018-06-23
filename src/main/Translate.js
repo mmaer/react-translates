@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map, remove, omit, keys, last } from 'lodash';
+import {
+    map,
+    remove,
+    omit,
+    keys,
+    last,
+} from 'lodash';
 
 const translationObject = (isVariable = false) => ({
     isVariable,
@@ -30,8 +36,10 @@ export const replaceVariables = (translation, replaces = {}) => {
     }
 
     remove(translationArray, elem => elem.value === '');
-    return map(translationArray, ({ isVariable, value }) =>
-        (isVariable && (replaces[value] !== null && replaces[value] !== undefined) ? replaces[value] : value));
+    return map(translationArray, ({ isVariable, value }) => {
+        const hasVariable = isVariable && (replaces[value] !== null && replaces[value] !== undefined);
+        return hasVariable ? replaces[value] : value;
+    });
 };
 
 class Translate extends Component {
@@ -46,7 +54,7 @@ class Translate extends Component {
     };
 
     static contextTypes = {
-        translationsStore: PropTypes.object.isRequired,
+        translationsStore: PropTypes.shape.isRequired,
     };
 
     static defaultProps = {
@@ -71,16 +79,30 @@ class Translate extends Component {
 
     render() {
         const { translationsStore } = this.context;
-        const translationValue = translationsStore.getTranslationValue(this.props.value, this.props.count);
+        const {
+            className,
+            style,
+            value,
+            count,
+        } = this.props;
+        const translationValue = translationsStore.getTranslationValue(value, count);
         let translation;
         if (translationValue !== undefined && translationValue !== null) {
             translation = replaceVariables(translationValue, this.getTranslateVariables(this.props));
         } else {
-            translation = [<span style={{ color: 'red' }}>{this.props.value}</span>];
+            translation = [
+                <span style={{ color: 'red' }}>
+                    {value}
+                </span>,
+            ];
         }
         return (
-            <span className={this.props.className} style={this.props.style}>
-                {map(translation, (elem, index) => <span key={index}>{elem}</span>)}
+            <span className={className} style={style}>
+                {map(translation, (elem, index) => (
+                    <span key={index}>
+                        {elem}
+                    </span>
+                ))}
             </span>
         );
     }

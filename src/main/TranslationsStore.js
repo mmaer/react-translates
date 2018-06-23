@@ -16,7 +16,8 @@ class TranslationsStore {
         if (count !== null) {
             if (get(translations, `${key}_${count}`)) {
                 return get(translations, `${key}_${count}`);
-            } else if (count !== 1 && get(translations, `${key}_plural`)) {
+            }
+            if (count !== 1 && get(translations, `${key}_plural`)) {
                 return get(translations, `${key}_plural`);
             }
         }

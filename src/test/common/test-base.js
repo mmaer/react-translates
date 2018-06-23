@@ -19,5 +19,7 @@ const { expect } = chai;
 /**
  * Export
  */
-export { it, before, after, beforeEach, afterEach } from 'arrow-mocha/es5';
+export {
+    it, before, after, beforeEach, afterEach,
+} from 'arrow-mocha/es5';
 export { expect };
