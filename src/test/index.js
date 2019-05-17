@@ -1,6 +1,6 @@
 // setup for test files
-require('babel-register');
-require('babel-polyfill');
+require('@babel/register');
+require('@babel/polyfill');
 
 // temporary hack until SBKS-269 is fixed and fully rolled out
 require('ignore-styles');

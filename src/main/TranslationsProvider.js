@@ -1,41 +1,20 @@
 /* eslint-disable react/forbid-prop-types */
-import { Component } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import TranslationsStore from './TranslationsStore';
+import { TranslationsContext } from './Contexts';
 
-class TranslationsProvider extends Component {
-    static propTypes = {
-        translations: PropTypes.object.isRequired,
-        children: PropTypes.node.isRequired,
-    };
+const TranslationsProvider = ({ children, translations }) => (
+    <TranslationsContext.Provider value={translations}>
+        {children}
+    </TranslationsContext.Provider>
+);
 
-    static childContextTypes = {
-        translationsStore: PropTypes.object.isRequired,
-    };
-
-    constructor(props) {
-        super(props);
-        const { translations } = props;
-        this.translationsStore = new TranslationsStore(translations);
-    }
-
-    getChildContext() {
-        return {
-            translationsStore: this.translationsStore,
-        };
-    }
-
-    componentWillReceiveProps({ translations }) {
-        this.translationsStore.setTranslations(translations);
-    }
-
-    render() {
-        const { children } = this.props;
-        return children;
-    }
-}
+TranslationsProvider.propTypes = {
+    translations: PropTypes.object.isRequired,
+    children: PropTypes.node.isRequired,
+};
 
 export default TranslationsProvider;
 /* eslint-enable react/forbid-prop-types */
