@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import { expect, it } from '../common/test-base';
 
 import Translate, { TranslationsProvider } from '../../main';
-import { replaceVariables } from '../../main/Translate';
+import { replaceVariables } from '../../main/utils';
 
 import translations from '../../sample-translations';
 
